@@ -19,21 +19,21 @@ class _HomePageState extends State<HomePage>
   AnimationController _ctrl;
   Animation _ani;
   List<Luck> _items = [
-    Luck("apple", Colors.accents[0]),
-    Luck("raspberry", Colors.accents[2]),
-    Luck("grapes", Colors.accents[4]),
-    Luck("fruit", Colors.accents[6]),
-    Luck("milk", Colors.accents[8]),
-    Luck("salad", Colors.accents[10]),
-    Luck("cheese", Colors.accents[12]),
-    Luck("carrot", Colors.accents[14]),
+    Luck(0, "\$3,000,000", Colors.accents[0]),
+    Luck(1, "\$250,000", Colors.accents[2]),
+    Luck(2, "\$500,000", Colors.accents[4]),
+    Luck(3, "\$1,500,000", Colors.accents[6]),
+    Luck(4, "\$2,000,000", Colors.accents[0]),
+    Luck(5, "\$750,000", Colors.accents[2]),
+    Luck(6, "\$450,000", Colors.accents[4]),
+    Luck(7, "\$150,000", Colors.accents[6]),
   ];
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    var _duration = Duration(milliseconds: 5000);
+    var _duration = Duration(milliseconds: 10000);
     _ctrl = AnimationController(vsync: this, duration: _duration);
     _ani = CurvedAnimation(parent: _ctrl, curve: Curves.fastLinearToSlowEaseIn);
   }
@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage>
           height: 72,
           width: 72,
           child: Text(
-            "GO",
+            "SPIN!",
             style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
           ),
         ),
@@ -104,12 +104,12 @@ class _HomePageState extends State<HomePage>
 
   _buildResult(_value) {
     var _index = _calIndex(_value * _angle + _current);
-    String _asset = _items[_index].asset;
+    String _title = _items[_index].title;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Align(
         alignment: Alignment.bottomCenter,
-        child: Image.asset(_asset, height: 80, width: 80),
+        child: Text(_title),
       ),
     );
   }

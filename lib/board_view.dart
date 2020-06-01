@@ -67,6 +67,7 @@ class _BoardViewState extends State<BoardView> {
         child: Container(
           height: size.height,
           width: size.width,
+          // child: Text("dfsdfsfsdfsfdf sf sdfsd fsdf"),
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -78,17 +79,24 @@ class _BoardViewState extends State<BoardView> {
   }
 
   _buildImage(Luck luck) {
-    var _rotate = _rotote(widget.items.indexOf(luck));
+    final offsetIndex = 2;
+    var _rotate = _rotote(widget.items.indexOf(luck) + offsetIndex);
     return Transform.rotate(
       angle: _rotate,
       child: Container(
         height: size.height,
         width: size.width,
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
         child: ConstrainedBox(
-          constraints:
-              BoxConstraints.expand(height: size.height / 3, width: 44),
-          child: Image.asset(luck.asset),
+          constraints: BoxConstraints.expand(height: 15, width: 300),
+          child: Text(
+            luck.title,
+            style: TextStyle(
+              fontSize: 13.5,
+              fontWeight: FontWeight.w600,
+              color: Colors.white,
+            ),
+          ),
         ),
       ),
     );
